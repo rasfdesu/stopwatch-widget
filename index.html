@@ -5,21 +5,21 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      background-color: #f5f5f5;
+      background-color: #e1f0c4;
     }
     .stopwatch {
       text-align: center;
-      background-color: #ffffff;
+      background-color: #e1f0c4;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 02px10pxrgba(0, 0, 0, 0.1);
     }
     .time {
-      font-size: 2em;
+      font-size: 7em;
       margin-bottom: 20px;
     }
     .controlsbutton {
-      font-size: 1em;
+      font-size: 5em;
       padding: 10px20px;
       margin: 5px;
       border: none;
@@ -27,15 +27,15 @@
       cursor: pointer;
     }
     .start {
-      background-color: #28a745;
+      background-color: #9bc53d;
       color: white;
     }
     .stop {
-      background-color: #dc3545;
+      background-color: #a4243b;
       color: white;
     }
     .reset {
-      background-color: #ffc107;
+      background-color: #a7cecb;
       color: white;
     }
   </style><title>Stopwatch</title></head><body><div class="stopwatch"><div class="time" id="display">00:00:00</div><div class="controls"><button class="start" id="start">Start</button><button class="stop" id="stop">Stop</button><button class="reset" id="reset">Reset</button></div></div><script>let startTime, elapsedTime = 0, intervalId;
