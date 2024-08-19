@@ -23,7 +23,7 @@
       padding: 10px20px;
       margin: 5px;
       border: none;
-      border-radius: 5px;
+      border-radius: 7px;
       cursor: pointer;
     }
     .start {
@@ -42,18 +42,20 @@
   const display = document.getElementById('display');
 
   functionupdateTime() {
-    elapsedTime = Date.now() - startTime;
     const time = newDate(elapsedTime);
-    const minutes = String(time.getMinutes()).padStart(2, '0');
-    const seconds = String(time.getSeconds()).padStart(2, '0');
-    const milliseconds = String(Math.floor(time.getMilliseconds() / 10)).padStart(2, '0');
+    const minutes = String(time.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(time.getUTCSeconds()).padStart(2, '0');
+    const milliseconds = String(Math.floor(time.getUTCMilliseconds() / 10)).padStart(2, '0');
     display.textContent = `${minutes}:${seconds}:${milliseconds}`;
   }
 
   document.getElementById('start').addEventListener('click', () => {
     if (!intervalId) {
-      startTime = Date.now() - elapsedTime;
-      intervalId = setInterval(updateTime, 10);
+      startTime = Date.now() - elapsedTime;  // Reset start time to account for elapsed time
+      intervalId = setInterval(() => {
+        elapsedTime = Date.now() - startTime;
+        updateTime();
+      }, 10);  // Update every 10 milliseconds
     }
   });
 
@@ -66,6 +68,8 @@
     clearInterval(intervalId);
     intervalId = null;
     elapsedTime = 0;
-    display.textContent = '00:00:00';
+    updateTime();  // Reset display to 00:00:00
   });
+
+  // Initialize the display when the page loadsupdateTime();
 </script></body></html>
